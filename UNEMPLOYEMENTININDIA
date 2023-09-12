@@ -1,0 +1,47 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import Lasso
+from sklearn import metrics
+
+car_dataset = pd.read_csv('/content/CarPrice_Assignment.csv')
+
+car_dataset.info()
+
+
+car_dataset.shape
+
+car_dataset.isnull().sum()
+
+car_dataset.head()
+
+X = car_dataset['aspiration']
+Y = car_dataset['stroke']
+
+print(X)
+
+print(Y)
+
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.1, random_state=2)
+
+lin_reg_model = LinearRegression()
+
+plt.scatter(Y_train, X_train)
+plt.xlabel("Actual Price")
+plt.ylabel("Predicted Price")
+plt.title(" Actual Prices vs Predicted Prices")
+plt.show()
+
+plt.stackplot(Y_test, X_test)
+plt.xlabel("Actual Price")
+plt.ylabel("Predicted Price")
+plt.title(" Actual Prices vs Predicted Prices")
+plt.show()
+
+plt.bar(Y_train, X_train)
+plt.xlabel("Actual Price")
+plt.ylabel("Predicted Price")
+plt.title(" Actual Prices vs Predicted Prices")
+plt.show()
